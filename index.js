@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const main = require("./Mangose");
 const User = require("./models/user");
@@ -204,8 +205,9 @@ main()
   .then(() => {
     console.log("connected to db");
 
-    app.listen(3000, () => {
-      console.log("Server is running at port 3000");
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+      console.log(`Server is running at port ${PORT}`);
     });
   })
   .catch((err) => {
